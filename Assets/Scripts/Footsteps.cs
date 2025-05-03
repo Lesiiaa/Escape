@@ -5,6 +5,8 @@ using UnityEngine;
 public class Footsteps : MonoBehaviour
 {
     public GameObject footstep;
+    public bool blockInput = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -15,55 +17,60 @@ public class Footsteps : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey("w"))
+        void Update()
         {
-            footsteps();
+            if (blockInput) return;
+
+            if (Input.GetKey("w"))
+            {
+                footsteps();
+            }
+
+            if (Input.GetKeyDown("s"))
+            {
+                footsteps();
+            }
+
+            if (Input.GetKeyDown("a"))
+            {
+                footsteps();
+            }
+
+            if (Input.GetKeyDown("d"))
+            {
+                footsteps();
+            }
+
+            if (Input.GetKeyUp("w"))
+            {
+                StopFootsteps();
+            }
+
+            if (Input.GetKeyUp("s"))
+            {
+                StopFootsteps();
+            }
+
+            if (Input.GetKeyUp("a"))
+            {
+                StopFootsteps();
+            }
+
+            if (Input.GetKeyUp("d"))
+            {
+                StopFootsteps();
+            }
+
         }
 
-        if (Input.GetKeyDown("s"))
+        void footsteps()
         {
-            footsteps();
+            footstep.SetActive(true);
         }
 
-        if (Input.GetKeyDown("a"))
+        void StopFootsteps()
         {
-            footsteps();
+            footstep.SetActive(false);
         }
-
-        if (Input.GetKeyDown("d"))
-        {
-            footsteps();
-        }
-
-        if (Input.GetKeyUp("w"))
-        {
-            StopFootsteps();
-        }
-
-        if (Input.GetKeyUp("s"))
-        {
-            StopFootsteps();
-        }
-
-        if (Input.GetKeyUp("a"))
-        {
-            StopFootsteps();
-        }
-
-        if (Input.GetKeyUp("d"))
-        {
-            StopFootsteps();
-        }
-
-    }
-
-    void footsteps()
-    {
-        footstep.SetActive(true);
-    }
-
-    void StopFootsteps()
-    {
-        footstep.SetActive(false);
     }
 }

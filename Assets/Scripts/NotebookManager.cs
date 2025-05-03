@@ -9,6 +9,8 @@ public class NotebookManager : MonoBehaviour
     public Button closeButton;
     public MonoBehaviour[] scriptsToDisable;
     public ScrollRect scrollRect;
+    public Footsteps footstepsScript;
+
 
     // Dodane pole
     public RectTransform layoutRoot;  // ← tu przypisz "Content"
@@ -41,6 +43,9 @@ public class NotebookManager : MonoBehaviour
 
     void OpenNotebook()
     {
+        if (footstepsScript != null)
+            footstepsScript.blockInput = true;
+
         notebookUI.SetActive(true);
         isOpen = true;
         Cursor.visible = true;
@@ -55,6 +60,9 @@ public class NotebookManager : MonoBehaviour
 
     public void CloseNotebook()
     {
+        if (footstepsScript != null)
+            footstepsScript.blockInput = false;
+
         notebookUI.SetActive(false);
         isOpen = false;
         Cursor.visible = false;
