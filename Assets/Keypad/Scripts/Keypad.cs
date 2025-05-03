@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -12,7 +12,7 @@ namespace NavKeypad
         [SerializeField] private UnityEvent onAccessGranted;
         [SerializeField] private UnityEvent onAccessDenied;
         [Header("Combination Code (9 Numbers Max)")]
-        [SerializeField] private int keypadCombo = 12345;
+        private int keypadCombo = 8413;
 
         public UnityEvent OnAccessGranted => onAccessGranted;
         public UnityEvent OnAccessDenied => onAccessDenied;
@@ -118,6 +118,10 @@ namespace NavKeypad
             keypadDisplayText.text = currentInput;
         }
 
+        public Animator doorAnimator;
+        public Camera playerCamera;
+        public Camera doorCam;
+
         private void AccessGranted()
         {
             accessWasGranted = true;
@@ -125,7 +129,27 @@ namespace NavKeypad
             onAccessGranted?.Invoke();
             panelMesh.material.SetVector("_EmissionColor", screenGrantedColor * screenIntensity);
             audioSource.PlayOneShot(accessGrantedSfx);
+
+            if (doorAnimator != null)
+                doorAnimator.SetTrigger("Open");
+
+
+            if (doorCam != null && playerCamera != null)
+            {
+                playerCamera.enabled = false;
+                doorCam.enabled = true;
+
+                // ✨ Cofnij kamerę po 3 sekundach
+                StartCoroutine(ReturnToPlayerCameraAfterDelay(3f));
+            }
         }
 
+        private IEnumerator ReturnToPlayerCameraAfterDelay(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+
+            doorCam.enabled = false;
+            playerCamera.enabled = true;
+        }
     }
 }
