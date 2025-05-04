@@ -1185,6 +1185,7 @@ GameObject:
   m_Component:
   - component: {fileID: 165987497}
   - component: {fileID: 165987498}
+  - component: {fileID: 165987499}
   m_Layer: 0
   m_Name: footsteps
   m_TagString: Untagged
@@ -1219,7 +1220,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 53e72caa6feb663488158ba74cdff965, type: 3}
   m_Resource: {fileID: 8300000, guid: 53e72caa6feb663488158ba74cdff965, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -1304,6 +1305,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &165987499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165987496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7b8943f354c88545973f385520560bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footstepAudio: {fileID: 165987498}
+  notebookManager: {fileID: 1088091000}
 --- !u!1 &167549931
 GameObject:
   m_ObjectHideFlags: 0
@@ -1882,8 +1897,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7b8943f354c88545973f385520560bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footstep: {fileID: 165987496}
-  blockInput: 0
+  footstepAudio: {fileID: 0}
+  notebookManager: {fileID: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -9909,7 +9924,7 @@ Transform:
   m_GameObject: {fileID: 1745733772}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 45.617462, y: -20.291775, z: -6.621771}
+  m_LocalPosition: {x: 45.617462, y: -20.28, z: -6.621771}
   m_LocalScale: {x: 11.767376, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

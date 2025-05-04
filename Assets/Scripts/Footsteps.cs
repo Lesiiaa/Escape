@@ -1,76 +1,30 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Footsteps : MonoBehaviour
 {
-    public GameObject footstep;
-    public bool blockInput = false;
+    public AudioSource footstepAudio; // ← przypisz Audio Source
+    public NotebookManager notebookManager;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        footstep.SetActive(false);
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        void Update()
+        if (notebookManager != null && notebookManager.IsOpen())
         {
-            if (blockInput) return;
-
-            if (Input.GetKey("w"))
-            {
-                footsteps();
-            }
-
-            if (Input.GetKeyDown("s"))
-            {
-                footsteps();
-            }
-
-            if (Input.GetKeyDown("a"))
-            {
-                footsteps();
-            }
-
-            if (Input.GetKeyDown("d"))
-            {
-                footsteps();
-            }
-
-            if (Input.GetKeyUp("w"))
-            {
-                StopFootsteps();
-            }
-
-            if (Input.GetKeyUp("s"))
-            {
-                StopFootsteps();
-            }
-
-            if (Input.GetKeyUp("a"))
-            {
-                StopFootsteps();
-            }
-
-            if (Input.GetKeyUp("d"))
-            {
-                StopFootsteps();
-            }
-
+            if (footstepAudio.isPlaying)
+                footstepAudio.Stop();
+            return;
         }
 
-        void footsteps()
+        if ((Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d")))
         {
-            footstep.SetActive(true);
+            if (!footstepAudio.isPlaying)
+                footstepAudio.Play();
         }
-
-        void StopFootsteps()
+        else
         {
-            footstep.SetActive(false);
+            if (footstepAudio.isPlaying)
+                footstepAudio.Stop();
         }
     }
 }
