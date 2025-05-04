@@ -19,7 +19,7 @@ public class JumpUnlocker : MonoBehaviour
                 StartCoroutine(HideMessageAfterDelay());
             }
 
-            // Ukryj tylko obiekt wizualny skoku (np. Mesh Renderer), ale nie niszcz jeszcze skryptu
+        
             GetComponent<MeshRenderer>().enabled = false;
             GetComponent<Collider>().enabled = false;
         }
@@ -31,6 +31,6 @@ public class JumpUnlocker : MonoBehaviour
         if (jumpMessageUI != null)
             jumpMessageUI.SetActive(false);
 
-        Destroy(gameObject); // teraz można bezpiecznie zniszczyć obiekt
+        Destroy(gameObject);
     }
 }

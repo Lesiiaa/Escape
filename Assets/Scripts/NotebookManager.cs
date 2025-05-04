@@ -11,20 +11,18 @@ public class NotebookManager : MonoBehaviour
     public ScrollRect scrollRect;
     public Footsteps footstepsScript;
 
-    public RectTransform layoutRoot;  // ← przypisz "Content"
+    public RectTransform layoutRoot;
 
     private bool isOpen = false;
     private const string NoteKey = "PlayerNote";
 
     void Start()
     {
-        // Wczytaj poprzednią notatkę
+  
         inputField.text = PlayerPrefs.GetString(NoteKey, "");
 
-        // Obsługa przycisku X
         closeButton.onClick.AddListener(CloseNotebook);
 
-        // Odświeżaj layout przy zmianie tekstu
         inputField.onValueChanged.AddListener(delegate { RefreshLayout(); });
     }
 

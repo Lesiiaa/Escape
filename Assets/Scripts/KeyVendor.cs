@@ -8,7 +8,7 @@ public class KeyVendor : MonoBehaviour
     public Vector3 pressOffset = new Vector3(0, -0.1f, 0);
     public GameObject keyIconUI;
     public TMP_Text coinTextUI;
-    public GameObject notEnoughCoinsUI; // ← UI tekstu "za mało monet"
+    public GameObject notEnoughCoinsUI;
     public float messageDuration = 2f;
 
     private bool alreadyPurchased = false;
@@ -42,7 +42,7 @@ public class KeyVendor : MonoBehaviour
         {
             if (notEnoughCoinsUI != null)
             {
-                StopAllCoroutines(); // zatrzymaj poprzednie wywołania
+                StopAllCoroutines(); 
                 StartCoroutine(ShowMessageTemporarily());
             }
         }

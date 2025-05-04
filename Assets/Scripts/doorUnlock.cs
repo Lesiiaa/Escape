@@ -5,9 +5,9 @@ public class DoorTrigger : MonoBehaviour
 {
     public Animator doorAnimator;
     public string openTrigger = "Open";
-    public GameObject promptUI;            // np. "Press E to open"
-    public GameObject keyIconUI;           // ikona klucza – aktywna = gracz ma klucz
-    public GameObject needKeyMessageUI;    // np. "You need a key!" UI
+    public GameObject promptUI;           
+    public GameObject keyIconUI;           
+    public GameObject needKeyMessageUI;   
     public float messageDuration = 2f;
 
     private bool playerInZone = false;
@@ -38,8 +38,8 @@ public class DoorTrigger : MonoBehaviour
             {
                 doorAnimator.SetTrigger(openTrigger);
                 promptUI.SetActive(false);
-                keyIconUI.SetActive(false); // "zużyj" klucz
-                Destroy(this); // opcjonalnie: drzwi już otwarte
+                keyIconUI.SetActive(false); 
+                Destroy(this);
             }
             else
             {
