@@ -5,12 +5,13 @@ public class DoorTrigger : MonoBehaviour
 {
     public Animator doorAnimator;
     public string openTrigger = "Open";
-    public GameObject promptUI;           
-    public GameObject keyIconUI;           
-    public GameObject needKeyMessageUI;   
+    public GameObject promptUI;
+    public GameObject keyIconUI;
+    public GameObject needKeyMessageUI;
     public float messageDuration = 2f;
-
     private bool playerInZone = false;
+
+    private const string doorOpenKey = "DoorOpened";
 
     private void OnTriggerEnter(Collider other)
     {
@@ -37,8 +38,11 @@ public class DoorTrigger : MonoBehaviour
             if (keyIconUI != null && keyIconUI.activeSelf)
             {
                 doorAnimator.SetTrigger(openTrigger);
+                PlayerPrefs.SetInt(doorOpenKey, 1); 
+                PlayerPrefs.Save();
+
                 promptUI.SetActive(false);
-                keyIconUI.SetActive(false); 
+                keyIconUI.SetActive(false);
                 Destroy(this);
             }
             else

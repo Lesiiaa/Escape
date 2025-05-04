@@ -13,18 +13,16 @@ public class NotebookManager : MonoBehaviour
 
     public RectTransform layoutRoot;
 
+
     private bool isOpen = false;
-    private const string NoteKey = "PlayerNote";
 
     void Start()
     {
-  
-        inputField.text = PlayerPrefs.GetString(NoteKey, "");
-
+        inputField.text = PlayerPrefs.GetString("NotebookNote", "");
         closeButton.onClick.AddListener(CloseNotebook);
-
         inputField.onValueChanged.AddListener(delegate { RefreshLayout(); });
     }
+
 
     void Update()
     {
@@ -59,9 +57,10 @@ public class NotebookManager : MonoBehaviour
         foreach (var s in scriptsToDisable)
             s.enabled = true;
 
-        PlayerPrefs.SetString(NoteKey, inputField.text);
+        PlayerPrefs.SetString("NotebookNote", inputField.text);
         PlayerPrefs.Save();
     }
+
 
     private void RefreshLayout()
     {
@@ -72,5 +71,4 @@ public class NotebookManager : MonoBehaviour
     {
         return isOpen;
     }
-
 }

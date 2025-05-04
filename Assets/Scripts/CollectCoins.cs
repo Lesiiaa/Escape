@@ -1,22 +1,28 @@
-﻿using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
+using TMPro;
 
 public class CollectibleCoin : MonoBehaviour
 {
+    public string coinID;
     public AudioClip collectSound;
-    public TMP_Text coinTextUI; // ← Przypisz w Inspectorze
+    public TMP_Text coinTextUI;
     public static int coinCount = 0;
+
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            PlayerPrefs.SetInt(coinID, 1);
+            PlayerPrefs.Save();
+
             AudioManager audioManager = FindObjectOfType<AudioManager>();
             if (audioManager != null && collectSound != null)
                 audioManager.PlaySFX(collectSound);
 
             coinCount++;
             UpdateCoinUI();
+
             Destroy(gameObject);
         }
     }
@@ -24,8 +30,6 @@ public class CollectibleCoin : MonoBehaviour
     void UpdateCoinUI()
     {
         if (coinTextUI != null)
-        {
             coinTextUI.text = coinCount.ToString();
-        }
     }
 }

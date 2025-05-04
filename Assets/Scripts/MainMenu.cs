@@ -1,16 +1,38 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    public void Play()
+    public Button continueButton;
+
+    void Start()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        if (SceneManager.sceneCount > 1)
+            continueButton.interactable = true;
+        else
+            continueButton.interactable = false;
+    }
+
+    public void NewGame()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Game");
+    }
+
+    public void Continue()
+    {
+        Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        SceneManager.UnloadSceneAsync("MainMenu");
     }
 
     public void Quit()
     {
         Application.Quit();
-        Debug.Log("Player Has Quit The Game");
     }
 }
