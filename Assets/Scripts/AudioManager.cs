@@ -1,3 +1,4 @@
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -6,6 +7,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource SFXSource;
 
     public AudioClip background;
+    public AudioClip jump;
+    public AudioClip coinsCollect;
 
     private void Start()
     {
@@ -13,8 +16,8 @@ public class AudioManager : MonoBehaviour
         musicSource.Play();
     }
 
-    //public void PlaySFX(AudioClip clip)
-    //{
-    //    SFXSource.PlayOneShot(clip);
-    //}
+    public void PlaySFX(AudioClip clip)
+    {
+        SFXSource.PlayOneShot(clip);
+    }
 }

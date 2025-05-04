@@ -4,12 +4,27 @@ using UnityEngine;
 
 public class Footsteps : MonoBehaviour
 {
-    public AudioSource footstepAudio; // ← przypisz Audio Source
+    public AudioSource footstepAudio;
     public NotebookManager notebookManager;
+
+    private CharacterController charController;
+
+    void Start()
+    {
+        charController = GetComponentInParent<CharacterController>();
+
+    }
 
     void Update()
     {
         if (notebookManager != null && notebookManager.IsOpen())
+        {
+            if (footstepAudio.isPlaying)
+                footstepAudio.Stop();
+            return;
+        }
+
+        if (!charController.isGrounded)
         {
             if (footstepAudio.isPlaying)
                 footstepAudio.Stop();
