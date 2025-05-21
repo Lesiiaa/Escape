@@ -7,7 +7,7 @@ public class PauseHandler : MonoBehaviour
 
     private void Start()
     {
-        notebookManager = FindObjectOfType<NotebookManager>();
+        notebookManager = Object.FindFirstObjectByType<NotebookManager>();
     }
 
     void Update()
@@ -16,8 +16,24 @@ public class PauseHandler : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            Time.timeScale = 0f;
-            SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
+            // find an active scene called MainMenu
+            bool menuAlreadyOpen = false;
+
+            for (int i = 0; i < SceneManager.sceneCount; i++)
+            {
+                Scene scene = SceneManager.GetSceneAt(i);
+                if (scene.name == "MainMenu")
+                {
+                    menuAlreadyOpen = true;
+                    break;
+                }
+            }
+
+            if (!menuAlreadyOpen)
+            {
+                Time.timeScale = 0f;
+                SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
+            }
         }
     }
 }

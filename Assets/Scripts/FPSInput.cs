@@ -17,8 +17,7 @@ public class FPSInput : MonoBehaviour
     void Start()
     {
         _charController = GetComponent<CharacterController>();
-        audioManager = FindObjectOfType<AudioManager>();
-
+        audioManager = Object.FindFirstObjectByType<AudioManager>();
     }
 
     void Update()

@@ -16,7 +16,8 @@ public class CollectibleCoin : MonoBehaviour
             PlayerPrefs.SetInt(coinID, 1);
             PlayerPrefs.Save();
 
-            AudioManager audioManager = FindObjectOfType<AudioManager>();
+            AudioManager audioManager = Object.FindFirstObjectByType<AudioManager>();
+
             if (audioManager != null && collectSound != null)
                 audioManager.PlaySFX(collectSound);
 
