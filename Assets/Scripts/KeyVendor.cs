@@ -26,7 +26,7 @@ public class KeyVendor : MonoBehaviour
     {
         if (alreadyPurchased) return;
 
-        if (CollectibleCoin.coinCount >= cost)
+        if (CollectibleCoin.coinCount >= cost)  //pay for the key, players echnages coins for a key
         {
             transform.position = initialPosition + pressOffset;
             CollectibleCoin.coinCount -= cost;
@@ -36,11 +36,11 @@ public class KeyVendor : MonoBehaviour
             if (coinTextUI != null)
                 coinTextUI.text = CollectibleCoin.coinCount.ToString();
 
-            Debug.Log("Gracz otrzymał klucz!");
+            Debug.Log("Gracz otrzymal klucz");
         }
         else
         {
-            if (notEnoughCoinsUI != null)
+            if (notEnoughCoinsUI != null)   //not enough coins message
             {
                 StopAllCoroutines(); 
                 StartCoroutine(ShowMessageTemporarily());

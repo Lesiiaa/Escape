@@ -18,7 +18,7 @@ public class NotebookManager : MonoBehaviour
 
     void Start()
     {
-        inputField.text = PlayerPrefs.GetString("NotebookNote", "");
+        inputField.text = PlayerPrefs.GetString("NotebookNote", "");    //note
         closeButton.onClick.AddListener(CloseNotebook);
         inputField.onValueChanged.AddListener(delegate { RefreshLayout(); });
     }
@@ -26,7 +26,7 @@ public class NotebookManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.N))
+        if (Input.GetKeyDown(KeyCode.N))    //opening the notebook
         {
             if (!isOpen)
                 OpenNotebook();

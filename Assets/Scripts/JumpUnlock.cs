@@ -8,9 +8,9 @@ public class JumpUnlocker : MonoBehaviour
     private const string jumpUnlockKey = "JumpUnlocked";
 
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) //enable jump after collecting an item
     {
-        FPSInput player = other.GetComponent<FPSInput>();
+        FPSInput player = other.GetComponent<FPSInput>();   
         if (player != null)
         {
             player.CanJump = true;

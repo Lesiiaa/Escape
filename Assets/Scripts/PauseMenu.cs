@@ -14,7 +14,7 @@ public class PauseHandler : MonoBehaviour
     {
         if (notebookManager != null && notebookManager.IsOpen()) return;
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R))    //open menu (r)
         {
             // find an active scene called MainMenu
             bool menuAlreadyOpen = false;

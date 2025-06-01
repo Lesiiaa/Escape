@@ -17,7 +17,7 @@ public class Footsteps : MonoBehaviour
 
     void Update()
     {
-        if (notebookManager != null && notebookManager.IsOpen())
+        if (notebookManager != null && notebookManager.IsOpen())    //if notebook is open block footsteps sound effect
         {
             if (footstepAudio.isPlaying)
                 footstepAudio.Stop();
@@ -31,7 +31,7 @@ public class Footsteps : MonoBehaviour
             return;
         }
 
-        if ((Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d")))
+        if ((Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d"))) //play sound effect
         {
             if (!footstepAudio.isPlaying)
                 footstepAudio.Play();

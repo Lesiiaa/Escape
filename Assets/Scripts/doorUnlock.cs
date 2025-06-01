@@ -35,7 +35,7 @@ public class DoorTrigger : MonoBehaviour
     {
         if (playerInZone && Input.GetKeyDown(KeyCode.E))
         {
-            if (keyIconUI != null && keyIconUI.activeSelf)
+            if (keyIconUI != null && keyIconUI.activeSelf)  //activate the door if player has a key
             {
                 doorAnimator.SetTrigger(openTrigger);
                 PlayerPrefs.SetInt(doorOpenKey, 1); 
@@ -52,7 +52,7 @@ public class DoorTrigger : MonoBehaviour
         }
     }
 
-    void ShowNeedKeyMessage()
+    void ShowNeedKeyMessage()   //message to show if player doesn't have a key
     {
         if (needKeyMessageUI != null)
         {

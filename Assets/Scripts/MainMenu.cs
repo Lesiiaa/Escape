@@ -14,7 +14,7 @@ public class MainMenu : MonoBehaviour
         if (SceneManager.sceneCount > 1)
             continueButton.interactable = true;
         else
-            continueButton.interactable = false;
+            continueButton.interactable = false;    //continue btn disabled if player just started the game
     }
 
     public void NewGame()

@@ -10,7 +10,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip jump;
     public AudioClip coinsCollect;
 
-    private void Start()
+    private void Start() //background music
     {
         musicSource.clip = background;
         musicSource.Play();

@@ -13,7 +13,7 @@ public class FlashlightToggle : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F))    //use flashlight, activate
         {
             flashlight.enabled = !flashlight.enabled;
             flashlightItem.SetActive(flashlight.enabled);

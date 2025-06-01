@@ -21,7 +21,7 @@ public class CollectibleCoin : MonoBehaviour
             if (audioManager != null && collectSound != null)
                 audioManager.PlaySFX(collectSound);
 
-            coinCount++;
+            coinCount++;    //add coins, change ui number
             UpdateCoinUI();
 
             Destroy(gameObject);
