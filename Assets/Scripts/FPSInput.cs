@@ -8,6 +8,8 @@ public class FPSInput : MonoBehaviour
     public float JumpForce = 5.0f;
     public float Gravity = -9.8f;
     public bool CanJump = false;
+    public GameObject passwordPanel;
+
 
     private AudioManager audioManager;
     private CharacterController _charController;
@@ -26,6 +28,9 @@ public class FPSInput : MonoBehaviour
 
     void Update()
     {
+        if (passwordPanel != null && passwordPanel.activeSelf)
+            return;
+
         float deltaX = Input.GetAxis("Horizontal") * Speed;
         float deltaZ = Input.GetAxis("Vertical") * Speed;
         Vector3 movement = new Vector3(deltaX, 0, deltaZ);

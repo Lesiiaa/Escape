@@ -17,8 +17,11 @@ public class MouseLook : MonoBehaviour {
 	public float maximumVert = 45.0f;
 
 	private float _rotationX = 0;
-	
-	void Start() {
+
+    public GameObject passwordPanel;
+
+
+    void Start() {
         Cursor.lockState = CursorLockMode.Locked;
         
 		// Make the rigid body not change rotation
@@ -28,7 +31,11 @@ public class MouseLook : MonoBehaviour {
 	}
 
     void Update() {
-		if (axes == RotationAxes.MouseX) {
+
+        if (passwordPanel != null && passwordPanel.activeSelf)
+            return;
+
+        if (axes == RotationAxes.MouseX) {
 			transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivityHor, 0);
 		}
 		else if (axes == RotationAxes.MouseY) {

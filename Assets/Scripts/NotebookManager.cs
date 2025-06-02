@@ -4,29 +4,35 @@ using UnityEngine.UI;
 
 public class NotebookManager : MonoBehaviour
 {
-    public GameObject notebookUI;
-    public TMP_InputField inputField;
-    public Button closeButton;
-    public MonoBehaviour[] scriptsToDisable;
-    public ScrollRect scrollRect;
-    public Footsteps footstepsScript;
+    public GameObject notebookUI;                  
+    public TMP_InputField inputField;              
+    public Button closeButton;                     
+    public ScrollRect scrollRect;                  //Scroll component to reset scroll on open
+    public Footsteps footstepsScript;              
 
-    public RectTransform layoutRoot;
+    public RectTransform layoutRoot;               //Used to force layout refresh
 
-
-    private bool isOpen = false;
+    private bool isOpen = false;                   
+    public GameObject passwordPanel;               
 
     void Start()
     {
-        inputField.text = PlayerPrefs.GetString("NotebookNote", "");    //note
+        //Load previously saved note content (if any)
+        inputField.text = PlayerPrefs.GetString("NotebookNote", "");
+
+        //Register listeners for the close button and input text changes
         closeButton.onClick.AddListener(CloseNotebook);
         inputField.onValueChanged.AddListener(delegate { RefreshLayout(); });
     }
 
-
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.N))    //opening the notebook
+        //Block notebook opening if the password panel is active
+        if (passwordPanel != null && passwordPanel.activeSelf)
+            return;
+
+        //Toggle notebook on 'N' key
+        if (Input.GetKeyDown(KeyCode.N))
         {
             if (!isOpen)
                 OpenNotebook();
@@ -35,14 +41,13 @@ public class NotebookManager : MonoBehaviour
 
     void OpenNotebook()
     {
+        //Show the notebook and unlock cursor
         notebookUI.SetActive(true);
         isOpen = true;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
-        foreach (var s in scriptsToDisable)
-            s.enabled = false;
-
+        //Reset scroll position to the top
         scrollRect.verticalNormalizedPosition = 0;
         RefreshLayout();
     }
@@ -54,16 +59,14 @@ public class NotebookManager : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
-        foreach (var s in scriptsToDisable)
-            s.enabled = true;
-
+        //Save current note content
         PlayerPrefs.SetString("NotebookNote", inputField.text);
         PlayerPrefs.Save();
     }
 
-
     private void RefreshLayout()
     {
+        //Force the layout system to update (especially useful for text changes)
         LayoutRebuilder.ForceRebuildLayoutImmediate(layoutRoot);
     }
 
