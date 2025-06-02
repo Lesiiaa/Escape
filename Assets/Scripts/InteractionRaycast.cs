@@ -17,30 +17,28 @@ public class InteractionRaycast : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log("Naciœniêto E!");
-
             Ray ray = new Ray(mainCamera.transform.position, mainCamera.transform.forward);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, interactionDistance, interactableLayer))
             {
-                Debug.Log("Raycast trafi³ w: " + hit.collider.name);
+                Debug.Log("Raycast hit: " + hit.collider.name);
 
                 if (hit.collider.CompareTag("PasswordTrigger"))
                 {
-                    Debug.Log("Wykryto obiekt do interakcji!");
+                    Debug.Log("There is an object");
                     passwordPanel.SetActive(true);
                     Cursor.lockState = CursorLockMode.None;
                     Cursor.visible = true;
                 }
                 else
                 {
-                    Debug.Log("Obiekt nie ma tagu PasswordTrigger");
+                    Debug.Log("No tag PasswordTrigger");
                 }
             }
             else
             {
-                Debug.Log("Raycast niczego nie trafi³");
+                Debug.Log("Raycast didnt hit");
             }
         }
     }

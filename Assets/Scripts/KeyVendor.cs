@@ -36,7 +36,7 @@ public class KeyVendor : MonoBehaviour
             if (coinTextUI != null)
                 coinTextUI.text = CollectibleCoin.coinCount.ToString();
 
-            Debug.Log("Gracz otrzymal klucz");
+            Debug.Log("Player got a key");
         }
         else
         {

@@ -139,7 +139,7 @@ namespace NavKeypad
                 playerCamera.enabled = false;
                 doorCam.enabled = true;
 
-                // ✨ Cofnij kamerę po 3 sekundach
+                // Change camera after 3s
                 StartCoroutine(ReturnToPlayerCameraAfterDelay(3f));
             }
         }
