@@ -9,6 +9,8 @@ public class FPSInput : MonoBehaviour
     public float Gravity = -9.8f;
     public bool CanJump = false;
     public GameObject passwordPanel;
+    public GameObject notebookUI;
+
 
 
     private AudioManager audioManager;
@@ -30,6 +32,10 @@ public class FPSInput : MonoBehaviour
     {
         if (passwordPanel != null && passwordPanel.activeSelf)
             return;
+
+        if (notebookUI != null && notebookUI.activeSelf)
+            return;
+
 
         float deltaX = Input.GetAxis("Horizontal") * Speed;
         float deltaZ = Input.GetAxis("Vertical") * Speed;

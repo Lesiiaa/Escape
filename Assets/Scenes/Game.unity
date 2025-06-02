@@ -3456,6 +3456,7 @@ MonoBehaviour:
   Gravity: -9.8
   CanJump: 0
   passwordPanel: {fileID: 994214346}
+  notebookUI: {fileID: 1106704994}
 --- !u!114 &329887537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3474,6 +3475,7 @@ MonoBehaviour:
   minimumVert: -45
   maximumVert: 45
   passwordPanel: {fileID: 994214346}
+  notebookUI: {fileID: 1106704994}
 --- !u!114 &329887538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3672,6 +3674,7 @@ MonoBehaviour:
   minimumVert: -45
   maximumVert: 45
   passwordPanel: {fileID: 994214346}
+  notebookUI: {fileID: 1106704994}
 --- !u!114 &330585549
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -19,6 +19,8 @@ public class MouseLook : MonoBehaviour {
 	private float _rotationX = 0;
 
     public GameObject passwordPanel;
+    public GameObject notebookUI;
+
 
 
     void Start() {
@@ -34,6 +36,10 @@ public class MouseLook : MonoBehaviour {
 
         if (passwordPanel != null && passwordPanel.activeSelf)
             return;
+
+        if (notebookUI != null && notebookUI.activeSelf)
+            return;
+
 
         if (axes == RotationAxes.MouseX) {
 			transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivityHor, 0);
